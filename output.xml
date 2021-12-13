@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.8.5 on win32)" generated="20211213 23:43:10.178" rpa="false" schemaversion="2">
+<suite id="s1" name="Hilo" source="D:\SCHOOL STUFF\3RD YEAR TERM 1\STSWENG\CruzF\test\hilo.robot">
+<test id="s1-t1" name="Sort Product Price High to Low">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>https://www.saucedemo.com/</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20211213 23:43:10.559" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20211213 23:43:10.559" endtime="20211213 23:43:13.674"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20211213 23:43:13.675" endtime="20211213 23:43:13.806"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>login-button</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20211213 23:43:13.833" level="INFO">Current page contains element 'login-button'.</msg>
+<status status="PASS" starttime="20211213 23:43:13.807" endtime="20211213 23:43:13.833"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>user-name</arg>
+<arg>standard_user</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211213 23:43:13.837" level="INFO">Typing text 'standard_user' into text field 'user-name'.</msg>
+<status status="PASS" starttime="20211213 23:43:13.835" endtime="20211213 23:43:13.972"/>
+</kw>
+<kw name="Input Password" library="SeleniumLibrary">
+<arg>password</arg>
+<arg>secret_sauce</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20211213 23:43:13.972" level="INFO">Typing password into text field 'password'.</msg>
+<msg timestamp="20211213 23:43:14.005" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20211213 23:43:14.044" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20211213 23:43:13.972" endtime="20211213 23:43:14.044"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>login-button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211213 23:43:14.045" level="INFO">Clicking button 'login-button'.</msg>
+<status status="PASS" starttime="20211213 23:43:14.045" endtime="20211213 23:43:14.141"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>class:title</arg>
+<arg>PRODUCTS</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20211213 23:43:14.142" level="INFO">Verifying element 'class:title' contains exact text 'PRODUCTS'.</msg>
+<status status="PASS" starttime="20211213 23:43:14.142" endtime="20211213 23:43:14.171"/>
+</kw>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>class:product_sort_container</arg>
+<arg>hilo</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20211213 23:43:14.172" level="INFO">Selecting options from selection list 'class:product_sort_container' by value hilo.</msg>
+<status status="PASS" starttime="20211213 23:43:14.171" endtime="20211213 23:43:14.257"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${i}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211213 23:43:14.260" level="INFO">${i} = 0</msg>
+<status status="PASS" starttime="20211213 23:43:14.259" endtime="20211213 23:43:14.260"/>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${my_list}</var>
+<arg>class:inventory_item_price</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20211213 23:43:14.273" level="INFO">${my_list} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="b60df780776a2ec68f027264ddd857a7", element="98fbf4a8-e2b3-4f94-b0a1-e55e443d7490")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20211213 23:43:14.261" endtime="20211213 23:43:14.273"/>
+</kw>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{my_list}</value>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="b60df780776a2ec68f027264ddd857a7", element="98fbf4a8-e2b3-4f94-b0a1-e55e443d7490")&gt;</var>
+<kw name="Get From List" library="Collections">
+<var>${temp}</var>
+<arg>${TEMP LIST}</arg>
+<arg>${i}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211213 23:43:14.274" level="INFO">${temp} = $49.99</msg>
+<status status="PASS" starttime="20211213 23:43:14.274" endtime="20211213 23:43:14.274"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${element.text}</arg>
+<arg>${temp}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211213 23:43:14.274" endtime="20211213 23:43:14.293"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${i}</var>
+<arg>${i}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20211213 23:43:14.293" level="INFO">${i} = 1</msg>
+<status status="PASS" starttime="20211213 23:43:14.293" endtime="20211213 23:43:14.294"/>
+</kw>
+<status status="PASS" starttime="20211213 23:43:14.274" endtime="20211213 23:43:14.294"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="b60df780776a2ec68f027264ddd857a7", element="aedac638-96ff-4936-8436-4e7201171672")&gt;</var>
+<kw name="Get From List" library="Collections">
+<var>${temp}</var>
+<arg>${TEMP LIST}</arg>
+<arg>${i}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211213 23:43:14.295" level="INFO">${temp} = $29.99</msg>
+<status status="PASS" starttime="20211213 23:43:14.294" endtime="20211213 23:43:14.295"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${element.text}</arg>
+<arg>${temp}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211213 23:43:14.295" endtime="20211213 23:43:14.309"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${i}</var>
+<arg>${i}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20211213 23:43:14.310" level="INFO">${i} = 2</msg>
+<status status="PASS" starttime="20211213 23:43:14.309" endtime="20211213 23:43:14.310"/>
+</kw>
+<status status="PASS" starttime="20211213 23:43:14.294" endtime="20211213 23:43:14.310"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="b60df780776a2ec68f027264ddd857a7", element="614da3c4-3f76-440c-b7c9-5d23b58945b4")&gt;</var>
+<kw name="Get From List" library="Collections">
+<var>${temp}</var>
+<arg>${TEMP LIST}</arg>
+<arg>${i}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211213 23:43:14.310" level="INFO">${temp} = $15.99</msg>
+<status status="PASS" starttime="20211213 23:43:14.310" endtime="20211213 23:43:14.310"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${element.text}</arg>
+<arg>${temp}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211213 23:43:14.310" endtime="20211213 23:43:14.324"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${i}</var>
+<arg>${i}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20211213 23:43:14.324" level="INFO">${i} = 3</msg>
+<status status="PASS" starttime="20211213 23:43:14.324" endtime="20211213 23:43:14.324"/>
+</kw>
+<status status="PASS" starttime="20211213 23:43:14.310" endtime="20211213 23:43:14.324"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="b60df780776a2ec68f027264ddd857a7", element="288b64f0-6fd2-4124-b5df-9675092a6387")&gt;</var>
+<kw name="Get From List" library="Collections">
+<var>${temp}</var>
+<arg>${TEMP LIST}</arg>
+<arg>${i}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211213 23:43:14.325" level="INFO">${temp} = $15.99</msg>
+<status status="PASS" starttime="20211213 23:43:14.325" endtime="20211213 23:43:14.325"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${element.text}</arg>
+<arg>${temp}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211213 23:43:14.325" endtime="20211213 23:43:14.339"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${i}</var>
+<arg>${i}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20211213 23:43:14.339" level="INFO">${i} = 4</msg>
+<status status="PASS" starttime="20211213 23:43:14.339" endtime="20211213 23:43:14.339"/>
+</kw>
+<status status="PASS" starttime="20211213 23:43:14.324" endtime="20211213 23:43:14.339"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="b60df780776a2ec68f027264ddd857a7", element="f614f7e0-37e8-443b-8024-10b3c096550e")&gt;</var>
+<kw name="Get From List" library="Collections">
+<var>${temp}</var>
+<arg>${TEMP LIST}</arg>
+<arg>${i}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211213 23:43:14.340" level="INFO">${temp} = $9.99</msg>
+<status status="PASS" starttime="20211213 23:43:14.339" endtime="20211213 23:43:14.340"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${element.text}</arg>
+<arg>${temp}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211213 23:43:14.340" endtime="20211213 23:43:14.353"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${i}</var>
+<arg>${i}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20211213 23:43:14.353" level="INFO">${i} = 5</msg>
+<status status="PASS" starttime="20211213 23:43:14.353" endtime="20211213 23:43:14.354"/>
+</kw>
+<status status="PASS" starttime="20211213 23:43:14.339" endtime="20211213 23:43:14.354"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="b60df780776a2ec68f027264ddd857a7", element="b2b4e5f9-d26a-42f9-b42d-12a621d64138")&gt;</var>
+<kw name="Get From List" library="Collections">
+<var>${temp}</var>
+<arg>${TEMP LIST}</arg>
+<arg>${i}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20211213 23:43:14.354" level="INFO">${temp} = $7.99</msg>
+<status status="PASS" starttime="20211213 23:43:14.354" endtime="20211213 23:43:14.354"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${element.text}</arg>
+<arg>${temp}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211213 23:43:14.354" endtime="20211213 23:43:14.368"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${i}</var>
+<arg>${i}+1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20211213 23:43:14.368" level="INFO">${i} = 6</msg>
+<status status="PASS" starttime="20211213 23:43:14.368" endtime="20211213 23:43:14.368"/>
+</kw>
+<status status="PASS" starttime="20211213 23:43:14.354" endtime="20211213 23:43:14.368"/>
+</iter>
+<status status="PASS" starttime="20211213 23:43:14.273" endtime="20211213 23:43:14.368"/>
+</for>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20211213 23:43:14.369" endtime="20211213 23:43:16.716"/>
+</kw>
+<status status="PASS" starttime="20211213 23:43:10.558" endtime="20211213 23:43:16.717"/>
+</test>
+<doc>A test suite with a single test for Sort Product Price High to Low
+
+
+This test follows the example using keywords from the Selenium library</doc>
+<status status="PASS" starttime="20211213 23:43:10.181" endtime="20211213 23:43:16.721"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Hilo">Hilo</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
